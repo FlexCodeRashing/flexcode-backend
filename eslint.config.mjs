@@ -30,8 +30,9 @@ export default tseslint.config(
             "unused-imports": noUnusedImports
         },
         rules: {
+            "@typescript-eslint/no-unused-vars": "warn",
             "@typescript-eslint/no-explicit-any": "off",
-            '@typescript-eslint/no-floating-promises': "warn",
+            "@typescript-eslint/no-floating-promises": "warn",
             "@typescript-eslint/no-unsafe-argument": "warn",
             "@stylistic/quotes": ["error", "double", { "allowTemplateLiterals": "always", "avoidEscape": true }],
             "@stylistic/no-mixed-spaces-and-tabs": "error",
