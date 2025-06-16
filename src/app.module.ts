@@ -9,9 +9,6 @@ import { AuthModule } from "./auth/auth.module";
 @Module({
     imports: [
         ConfigModule.forRoot(),
-        JwtModule.registerAsync({
-            useFactory: () => ({ secret: process.env.JWT_SECRET })
-        }),
         AuthModule
     ],
     controllers: [AppController],
