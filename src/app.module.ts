@@ -1,11 +1,17 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from "@nestjs/config"
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { JwtModule } from "@nestjs/jwt";
+import { AppController } from "./app.controller";
+import { AppService } from "./app.service";
 
 @Module({
-    imports: [ConfigModule.forRoot()],
+    imports: [
+        ConfigModule.forRoot(),
+        JwtModule.registerAsync({
+            useFactory: () => ({ secret: process.env.JWT_SECRET })
+        })
+    ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [AppService]
 })
 export class AppModule {}
