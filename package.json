@@ -2,7 +2,11 @@
   "name": "flex-code-api",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": {
+    "name": "RashingPro",
+    "url": "https://rashing.pro/",
+    "email": "contact@rashing.pro"
+  },
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
