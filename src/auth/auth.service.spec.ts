@@ -10,14 +10,17 @@ describe("AuthService", () => {
     beforeEach(async () => {
         const app = await Test.createTestingModule({
             providers: [AuthService],
-            imports: [await ConfigModule.forRoot(), JwtModule.register({secret: process.env.JWT_SECRET})]
-        }).compile()
+            imports: [
+                await ConfigModule.forRoot(),
+                JwtModule.register({ secret: process.env.JWT_SECRET })
+            ]
+        }).compile();
 
         authService = app.get(AuthService);
-        jwtService = app.get(JwtService)
-    })
+        jwtService = app.get(JwtService);
+    });
 
     it("JwtService test", async () => {
-        await jwtService.signAsync({})
-    })
-})
+        await jwtService.signAsync({});
+    });
+});
