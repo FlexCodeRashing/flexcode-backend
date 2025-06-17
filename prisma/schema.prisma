@@ -10,6 +10,7 @@ datasource db {
 
 model User {
   id            Int            @id @default(autoincrement())
+  permissions   Int            @default(0)
   username      String         @unique
   sessions      Session[]
   revokedTokens RevokedToken[]
@@ -23,6 +24,7 @@ model Session {
   expires   DateTime
   userAgent String
   createdAt DateTime @default(now())
+  scope     Int      @default(0)
 }
 
 model RevokedToken {
