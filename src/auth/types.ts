@@ -28,4 +28,20 @@ export class Permissions {
     public set(permission: Permission, value: boolean): Permissions {
         return new Permissions(this.bitSet.set(permission, value));
     }
+
+    public can(required: Permissions): boolean {
+        let a = this.bitSet.value;
+        let b = required.bitSet.value;
+
+        while (a > 0 || b > 0) {
+            const bitA = a & (1 << 0);
+            const bitB = b & (1 << 0);
+            if (!(!bitB || bitA)) {
+                return false;
+            }
+            a >>= 1;
+            b >>= 1;
+        }
+        return true;
+    }
 }
