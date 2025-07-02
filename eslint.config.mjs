@@ -12,6 +12,9 @@ export default tseslint.config(
     ...tseslint.configs.recommendedTypeChecked,
     eslintPluginPrettierRecommended,
     {
+        ignores: ["**/generated/**"]
+    },
+    {
         languageOptions: {
             globals: {
                 ...globals.node,
