@@ -81,6 +81,11 @@
             "**/*.(t|j)s"
         ],
         "coverageDirectory": "../coverage",
-        "testEnvironment": "node"
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "src/prisma/generated",
+            ".*/*.module.(t|j)s",
+            "src/main.ts"
+        ]
     }
 }
