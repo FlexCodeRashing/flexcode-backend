@@ -48,8 +48,8 @@ describe("AuthService", () => {
             },
             new Permissions().set(Permission.ADMIN, true),
             ""
-        )
-        console.log(session)
-        expect(session).toBeDefined()
+        );
+        console.log(session);
+        expect(session).toBeDefined();
     });
 });
