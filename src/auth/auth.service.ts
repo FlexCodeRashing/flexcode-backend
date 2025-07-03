@@ -67,11 +67,7 @@ export class AuthService {
         }
     }
 
-    async createSession(
-        user: User,
-        scope: Permissions,
-        userAgent: string
-    ) {
+    async createSession(user: User, scope: Permissions, userAgent: string) {
         if (!new Permissions(user.permissions).can(scope))
             throw new HttpException({}, HttpStatus.FORBIDDEN);
         const tokens = await this.generateSessionTokens({}, user.id, scope);
