@@ -90,4 +90,20 @@ export class AuthService {
         }
         return tokens;
     }
+
+    async createUser(permissions: Permissions, username: string) {
+        try {
+            await this.prismaService.user.create({
+                data: {
+                    permissions: permissions.getValue(),
+                    username: username
+                }
+            });
+        } catch {
+            throw new HttpException(
+                "Internal Server Error",
+                HttpStatus.INTERNAL_SERVER_ERROR
+            );
+        }
+    }
 }
