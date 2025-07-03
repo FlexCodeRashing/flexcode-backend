@@ -77,7 +77,7 @@ export class AuthService {
         const tokens = await this.generateSessionTokens({}, user.id, scope);
 
         try {
-            this.prismaService.session.create({
+            await this.prismaService.session.create({
                 data: {
                     userId: user.id,
                     scope: scope.getValue(),
