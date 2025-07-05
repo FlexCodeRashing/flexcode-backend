@@ -9,12 +9,12 @@ datasource db {
 }
 
 model User {
-  id            Int            @id @default(autoincrement())
-  permissions   Int            @default(0)
-  username      String         @unique
-  sessions      Session[]
-  revokedTokens RevokedToken[]
-  integration   Integrations?
+  id                 Int                 @id @default(autoincrement())
+  permissions        Int                 @default(0)
+  username           String              @unique
+  sessions           Session[]
+  revokedTokens      RevokedToken[]
+  discordIntegration DiscordIntegration?
 }
 
 model Session {
@@ -34,14 +34,8 @@ model RevokedToken {
   expires DateTime
 }
 
-model Integrations {
-  user    User                @relation(fields: [userId], references: [id])
-  userId  Int                 @id
-  discord DiscordIntegration?
-}
-
 model DiscordIntegration {
-  integration Integrations @relation(fields: [userId], references: [userId])
-  userId      Int          @id
-  discordId   BigInt       @unique
+  user      User   @relation(fields: [userId], references: [id])
+  userId    Int    @id
+  discordId BigInt @unique
 }
