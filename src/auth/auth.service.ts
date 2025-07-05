@@ -91,14 +91,30 @@ export class AuthService {
         return tokens;
     }
 
-    async createUser(permissions: Permissions, username: string) {
+    async createUser(
+        permissions: Permissions,
+        username: string,
+        discordId?: bigint
+    ) {
         try {
-            await this.prismaService.user.create({
+            const user = await this.prismaService.user.create({
                 data: {
                     permissions: permissions.getValue(),
                     username: username
                 }
             });
+
+            if (discordId) {
+                const discordIntegration =
+                    await this.prismaService.discordIntegration.create({
+                        data: {
+                            userId: user.id,
+                            discordId: discordId
+                        }
+                    });
+            }
+
+            return user;
         } catch {
             throw new HttpException(
                 "Internal Server Error",
